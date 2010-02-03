@@ -21,29 +21,6 @@
 	    ;; add Erlang functions to an imenu menu
 	    (imenu-add-to-menubar "imenu")))
 
-;; Change theme
-(color-theme-twilight)
-
-;; Add keybindings
-(global-set-key (kbd "TAB") 'yas/expand)
-
-(add-hook 'ruby-mode-hook
-  (lambda ()
-    (define-key ruby-mode-map (kbd "A-r") 'ruby-compilation-this-buffer)
-    (define-key ruby-mode-map (kbd "A-R") 'ruby-compilation-this-test)
-    (define-key ruby-mode-map (kbd "A-i") 'inf-ruby)))
-
-(add-hook 'python-mode-hook
-  (lambda ()
-    (define-key python-mode-map (kbd "A-r") 'python-send-buffer)
-    (define-key python-mode-map (kbd "A-i") 'run-python)))
-
-(add-hook 'erlang-mode-hook
-  (lambda ()
-    (define-key erlang-mode-map (kbd "A-r") 'inferior-erlang-compile)
-    (define-key erlang-mode-map (kbd "A-i") 'inferior-erlang-display-buffer)
-    (define-key erlang-extended-mode-map (kbd "M-/") 'hippie-expand)))
-
 ;; Disable tabbar
 (tabbar-mode 0)
 
@@ -51,3 +28,40 @@
 (add-to-list 'load-path "~/.emacs.d/vendor/textmate.el")
 (require 'textmate)
 (textmate-mode)
+
+;; More customizations (from github.com/topfunky/emacs-starter-kit)
+(setq default-tab-width 4)
+(setq tab-width 4)
+
+;; Remove scrollbars and make hippie expand
+;; work nicely with yasnippet
+(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(require 'hippie-exp)
+(setq hippie-expand-try-functions-list
+      '(yas/hippie-try-expand
+        try-expand-dabbrev
+        try-expand-dabbrev-visible
+        try-expand-dabbrev-all-buffers
+        ;;        try-expand-dabbrev-from-kill
+        ;;         try-complete-file-name
+        ;;         try-complete-file-name-partially
+        ;;         try-complete-lisp-symbol
+        ;;         try-complete-lisp-symbol-partially
+        ;;         try-expand-line
+        ;;         try-expand-line-all-buffers
+        ;;         try-expand-list
+        ;;         try-expand-list-all-buffers
+        ;;        try-expand-whole-kill
+        ))
+ 
+(defun indent-or-complete ()
+  (interactive)
+  (if (and (looking-at "$") (not (looking-back "^\\s-*")))
+      (hippie-expand nil)
+    (indent-for-tab-command)))
+(add-hook 'find-file-hooks (function (lambda ()
+                                       (local-set-key (kbd "TAB") 'indent-or-complete))))
+                                       
+;; Activate theme
+(load "~/.emacs.d/vendor/topfunky-theme.el")
+(color-theme-topfunky)
