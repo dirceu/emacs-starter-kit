@@ -26,9 +26,6 @@
 (add-hook 'find-file-hooks (function (lambda ()
                                        (local-set-key (kbd "TAB") 'indent-or-complete))))
 
-;; Load theme
-(color-theme-twilight)
-
 ;; Load menu again (n00b mode on)
 (menu-bar-mode)
 
