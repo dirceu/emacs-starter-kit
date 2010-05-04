@@ -1,6 +1,6 @@
 ;; This is needed for Erlang mode setup
 (setq erlang-root-dir "/opt/local/lib/erlang")
-(setq load-path (cons "/opt/local/lib/erlang/lib/tools-2.6.5/emacs" load-path))
+(setq load-path (cons "/opt/local/lib/erlang/lib/tools-2.6.5.1/emacs" load-path))
 (setq exec-path (cons "/opt/local/lib/erlang/bin" exec-path))
 (require 'erlang-start)
 
@@ -42,16 +42,6 @@
         try-expand-dabbrev
         try-expand-dabbrev-visible
         try-expand-dabbrev-all-buffers
-        ;;        try-expand-dabbrev-from-kill
-        ;;         try-complete-file-name
-        ;;         try-complete-file-name-partially
-        ;;         try-complete-lisp-symbol
-        ;;         try-complete-lisp-symbol-partially
-        ;;         try-expand-line
-        ;;         try-expand-line-all-buffers
-        ;;         try-expand-list
-        ;;         try-expand-list-all-buffers
-        ;;        try-expand-whole-kill
         ))
  
 (defun indent-or-complete ()
