@@ -29,5 +29,8 @@
 ;; Load menu again (n00b mode on)
 (menu-bar-mode)
 
+;; Load default theme
+(color-theme-twilight)
+
 ;; Start server
 (server-start)
