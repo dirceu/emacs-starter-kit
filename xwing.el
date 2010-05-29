@@ -30,7 +30,7 @@
 (menu-bar-mode)
 
 ;; Load default theme
-(color-theme-twilight)
+;;(color-theme-twilight)
 
 ;; Start server
 (server-start)
