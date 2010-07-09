@@ -1,6 +1,6 @@
 ;; This is needed for Erlang mode setup
 (setq erlang-root-dir "/opt/local/lib/erlang")
-(setq load-path (cons "/opt/local/lib/erlang/lib/tools-2.6.5.1/emacs" load-path))
+(setq load-path (cons "/opt/local/lib/erlang/lib/tools-2.6.6/emacs" load-path))
 (setq exec-path (cons "/opt/local/lib/erlang/bin" exec-path))
 (require 'erlang-start)
 
@@ -55,3 +55,6 @@
 ;; Activate theme
 (load "~/.emacs.d/vendor/topfunky-theme.el")
 (color-theme-topfunky)
+
+;; Change meta key
+(setq mac-command-modifier 'meta)
